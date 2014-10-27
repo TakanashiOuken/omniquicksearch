@@ -4,7 +4,16 @@ var _importMap = function()
 {
   console.log('Import map from setting');  
   var map = safari.extension.settings.map;
-  localStorage.omniquicksearch = JSON.stringify({"map": JSON.parse(map)});
+  try
+  {
+    map = JSON.parse(map);
+  }
+  catch(Error)
+  {
+    alert(Error);
+  }
+
+  localStorage.omniquicksearch = JSON.stringify({"map": map});
 }
 
 var handleChange = function(Event) 
